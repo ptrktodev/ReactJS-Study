@@ -1,49 +1,57 @@
 import React from 'react';
 
-const titulo = <h1><b>TITULO</b></h1>
-
 const App = () => {
 
-  const cliente01 = {
-    nome: 'Luana',
-    idade: 34,
-    carrinho: [
-      {nome: 'Fone', valor: 48},
-      {nome: 'monitor', valor: 382}
-    ],
-    situacao: true
-  }
+  const produtos = [
+    {
+      id: 1,
+      nome: 'Smartphone',
+      preco: 'R$ 2000',
+      cores: ['#d60404', '#00d4ff', '#38f751']
+    },
+    {
+      id: 2,
+      nome: 'Notebook',
+      preco: 'R$ 3000',
+      cores: ['#af04d6', '#a2ff00']
+    },
+    {
+      id: 3,
+      nome: 'Tablet',
+      preco: 'R$ 1500',
+      cores: ['#0328c7', '#c7c603']
+    },
+  ]
+  
+  const livros = [
+    {nome: "Uma viagem", ano: 1998},
+    {nome: "O Castelo", ano: 1830},
+    {nome: "Filosofia da Vida", ano: 1728}
+  ]
 
-   const cliente02 = {
-    nome: 'Pedro',
-    idade: 24,
-    carrinho: [
-      {nome: 'Pc Gamer', valor: 8438},
-      {nome: 'Cadeira Gamer', valor: 2629}
-    ],
-    situacao: false
-  }  
+  let dadosFiltrados = produtos.filter(({preco})=> 
+      Number(preco.replace('R$', '')) > 1600
+    )
 
-  let dados = cliente02
-
-  const totalCompras = dados.carrinho
-        .map((el)=> { return el.valor })
-        .reduce((acc, atual)=> acc + atual)
-
-  // ======================
   return (
-    <div className="App">
-      <div> 
-        <p>Nome: {dados.nome}</p>
-        <p>Idade: {dados.idade}</p>
-        <p>Situação: {' '}
-          <span style={{color: dados.situacao ? 'green' : 'red'}}>
-            {dados.situacao ? "Ativa" : "Inativo"}
-          </span>
-        </p>
-        <p>Total Gasto: R$ {totalCompras}</p>
-        <p style={{color: 'red'}}>{totalCompras > 10000 ? "Você esta gastando muito!" : ''}</p>
-      </div>
+    <div>
+      <section>
+            {dadosFiltrados
+              .map(({id, nome, preco, cores})=> 
+                <div key={id}>
+                  <h1>{nome}</h1> 
+                  <h3>{preco}</h3>
+                  <ul>
+                    {cores.map((cor)=> 
+                      <li key={cor} style={{backgroundColor: cor}}>
+                        {cor}
+                      </li>
+                    )}
+                  </ul>
+                </div>
+              )}
+
+      </section>
     </div>
   )
 }
