@@ -1,24 +1,26 @@
 import React from 'react';
-import Controller from './controller';
-import Home from './Home';
-import Produtos from './Produtos';
-
 
 const App = () => {
 
-    let Pagina;
-    if (window.location.pathname === '/') {
-        Pagina = Home
-    } else {
-        Pagina = Produtos
-    }
+    // Hook 
+
+    let [ativo, setAtivo] = React.useState(true) // [true, f]
+    let [dados, setDados] = React.useState({nome: 'Patrick', idade: '20'})
+
+    function clickUpdate() {
+        setAtivo(!ativo)
+        setDados({...dados, faculdade: 'Possui Faculdade'})
+    } 
 
     return (
-        <>
-            <Controller/>
-            <Pagina />
-        </>
+        <div>
+            <p>{dados.nome}</p>
+            <p>{dados.idade}</p>
+            <p>{dados.faculdade}</p>
+            <button onClick={clickUpdate}>{ativo ? 'Ativo' : 'Inativo'}</button>
+        </div>
     )
+
 }
 
 export default App;
