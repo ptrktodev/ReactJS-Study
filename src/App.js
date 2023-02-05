@@ -3,77 +3,38 @@ import './App.css'
 
 const App = () => {
 
-    const styleInput = {
-        cursor: 'pointer',
+    const styleButton = {
         padding: '10px',
-        marginRight: '10px',
-        borderRadius: '5px'
+        fontSize: '1rem',
+        borderRadius: '5px',
+        cursor: 'pointer'
     }
 
-    // ============================================
-    const [coment, setComent] = React.useState([])
-    const [input, setinput] = React.useState('')
-    const [msg, setMsg] = React.useState('')
-    const focusInput = React.useRef()
-    const [ativo, setAtivo] = React.useState(false)
-
-    function send() {
-        if (input) {
-            setComent([...coment, input])
-            setinput('')
-            focusInput.current.focus()
-            setAtivo(!ativo)
-        } else {
-            let message = 'Adicone um valor'
-            setMsg(message)
-            setAtivo(!ativo)
-        }
+    const sucess = {
+        color: 'green'
     }
 
-    function changeValue({target}) {
-        setinput(target.value)
-    }
+    // ==============================
 
-    function resetList(){
-        setComent([])
-    }
+    const [cont , setCont] = React.useState(0)
+    const [msg , setMsg] = React.useState(null)
+    const TimeoutRef = React.useRef()
 
-    function lastItem() {
-        coment.pop()
-        setComent([...coment])
+    function contar() {
+        setCont(cont + 1)
+        setMsg(['Item adicionadoc'])
+        clearTimeout(TimeoutRef.current)
+        TimeoutRef.current = setTimeout(()=>{
+            setMsg(null)
+        }, 2500)
+        console.log(TimeoutRef.current)
     }
-
-    function keyTecla(event) {
-        if (event.key === 'Enter') {
-            if (input) {
-                setComent([...coment, input])
-                setinput('')
-                focusInput.current.focus()
-                setAtivo(!ativo)
-            } else {
-                let message = 'Adicone um valor'
-                setMsg(message)
-                setAtivo(!ativo)
-            }
-        }
-    }
-
-    // ============================================
 
     return (
         <div className="App"> 
             <header className='App-header'>
-                <h1>SEND COMMENTS TO THE LIST</h1>
-                <ul>
-                    {coment.map((el) =>
-                        <li key={el}>{el}</li>
-                    )}
-                </ul>
-                <input ref={focusInput} onKeyDown={keyTecla} style={styleInput} type='text' value={input} onChange={changeValue} />
-                <button style={styleInput} onClick={send}>Send</button> 
-                <button style={styleInput} onClick={lastItem}>Clear last item</button>
-                <button style={styleInput} onClick={resetList}>Reset list</button> 
-                {msg && !ativo && <p>{msg}</p>}
+                {msg && <p>{cont} {msg} <b style={sucess}>com sucesso</b>.</p>} 
+                <button style={styleButton} onClick={contar}>Contador: {cont} </button>
             </header>
         </div>
     )
