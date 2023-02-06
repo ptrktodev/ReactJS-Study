@@ -16,25 +16,29 @@ const App = () => {
 
     // ==============================
 
-    const [cont , setCont] = React.useState(0)
-    const [msg , setMsg] = React.useState(null)
-    const TimeoutRef = React.useRef()
-
-    function contar() {
-        setCont(cont + 1)
-        setMsg(['Item adicionadoc'])
-        clearTimeout(TimeoutRef.current)
-        TimeoutRef.current = setTimeout(()=>{
-            setMsg(null)
-        }, 2500)
-        console.log(TimeoutRef.current)
+    function operLenta() {
+        let c;
+        for (let i = 0; i < 1000000; i++) {
+            c = i + i / 9028
+        }
+        return c
     }
+
+    const [cont , setCont] = React.useState(0)
+
+    // 
+    const useMemo = React.useMemo(() => operLenta(), [])
+
+    //
+    const handleClick = React.useCallback(() => {
+        setCont((cont) => cont + 1)
+    }, [])
 
     return (
         <div className="App"> 
             <header className='App-header'>
-                {msg && <p>{cont} {msg} <b style={sucess}>com sucesso</b>.</p>} 
-                <button style={styleButton} onClick={contar}>Contador: {cont} </button>
+                <button style={styleButton} onClick={handleClick}>Contador: {cont} </button>
+                <p>ms: {useMemo}</p>
             </header>
         </div>
     )
