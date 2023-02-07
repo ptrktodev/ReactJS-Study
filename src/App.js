@@ -1,17 +1,19 @@
 import React from 'react'
 import './css/App.css'
-import { GlobalStorage } from './Global'
-import Produto from './Produto'
-import Api from './Api'
-import Image from './Image'
+import Footer from './Footer'
+import { globalStorage } from './Global'
+import Interface from './Interface'
+import Main from './Main'
 
 const App = () => {
   return (
-    <GlobalStorage>
-      <Produto />
-      <Api />
-      <Image />
-    </GlobalStorage>
+    <globalStorage>
+      <header className="App-container">
+        <Interface />
+        <Main />
+        <Footer />
+      </header>
+    </globalStorage>
   )
 }
 
