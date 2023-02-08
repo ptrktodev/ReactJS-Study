@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap');
+body {
+  font-family: 'Fira Sans', Arial, sans-serif;
+  background: rgb(255, 255, 255);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.App-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(0, 0, 0);
+  height: 40rem;
+  width: 80rem;
+  background: white;
+  border-radius: 8px;
+  border: 3px solid rgb(0, 122, 59);
+  padding: 10px;
+  gap: 10px;
+}
+
+.App-sup {
+  height: 7rem;
+  width: 79rem;
+  border: 3px solid rgb(255, 68, 211);
+}
+
+.App-Form {
+  height: 30rem;
+  width: 79rem;
+  border: 3px solid rgb(70, 119, 255);
+}
+
+.Radio-container {
+  margin-bottom: 10px;
+  width: 20rem;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid red;
+}
+
+.Radio-legend {
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.Radio-label {
+  margin: 0.4rem 0px;
+}
+
+ol,
+ul,
+h1,
+h2,
+h3,
+p,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+
+li {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+strong {
+  color: black;
+}
