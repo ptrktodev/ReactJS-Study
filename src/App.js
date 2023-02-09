@@ -49,9 +49,6 @@ const App = () => {
   const [loading, setLoading] = React.useState(false)
   const TimeoutRef = React.useRef()
   const [hability, setHability] = React.useState(false)
-  const [messageoff, setmessageoff] = React.useState(null)
-  const [onmsgof, setonmsgoff] = React.useState(false)
-  const [num, setnum] = React.useState(0)
 
   const resUser = Object.values(res)
   const resCorrect = perguntas.map((el) => {
@@ -93,14 +90,9 @@ const App = () => {
     setResp({ ...res, [target.id]: target.value })
   }
   function next() {
-    if (num > 0) {
-      setCont(cont + 1)
-      setLoading(true)
-      setHability(true)
-    } else {
-      setmessageoff(['Selecione alguma das opções.'])
-      setonmsgoff(true)
-    }
+    setCont(cont + 1)
+    setLoading(true)
+    setHability(true)
   }
 
   function prev() {
@@ -132,7 +124,6 @@ const App = () => {
             />
           ))}
         </form>
-        {onmsgof ? <span>{messageoff}</span> : ''}
         <div className="App-Button-1">
           {hability ? (
             <button onClick={prev} className="App-Button">
@@ -148,6 +139,7 @@ const App = () => {
       </section>
     )
   } else {
+    console.log('1', correctArrayLength)
     return (
       <After
         response={resFinal}

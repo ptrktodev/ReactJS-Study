@@ -23,6 +23,7 @@ const After = ({ response, load, lengthRes }) => {
       </div>
     )
   } else {
+    console.log('2', lengthRes)
     return (
       <div className="App-container">
         {load ? (
@@ -30,9 +31,19 @@ const After = ({ response, load, lengthRes }) => {
         ) : (
           <div className="App-emoji">
             <img src={svg1} style={{ width: '40%' }} />
-            <h2 style={{ fontWeight: 'bold', color: 'red', marginTop: '10px' }}>
-              Apenas <b>{lengthRes.length - 1}</b> correta.
-            </h2>
+            {lengthRes.length - 1 < 1 ? (
+              <h2
+                style={{ fontWeight: 'bold', color: 'red', marginTop: '10px' }}
+              >
+                Nenhuma correta
+              </h2>
+            ) : (
+              <h2
+                style={{ fontWeight: 'bold', color: 'red', marginTop: '10px' }}
+              >
+                Apenas <b>{lengthRes.length}</b> correta.
+              </h2>
+            )}
             <Trybutton />
           </div>
         )}
