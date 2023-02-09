@@ -1,0 +1,37 @@
+.Home {
+  display: flex;
+  justify-content: space-between;
+  padding: 5px 20px;
+  align-items: flex-start;
+  width: 90%;
+  gap: 2rem;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 1rem 0rem 2rem 0px;
+}
+
+.Home-div1 img {
+  max-width: 300px;
+  border-radius: 12px;
+}
+
+/* ================= */
+
+.Home-div2 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.Home-div2 p {
+  word-spacing: 3px;
+  font-size: 1.1rem;
+}
+
+/* --------------------- */
+
+@media (max-width: 850px) {
+  .Home {
+    flex-direction: column;
+    align-items: center;
+  }
+}

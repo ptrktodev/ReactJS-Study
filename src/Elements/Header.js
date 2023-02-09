@@ -1,24 +1,25 @@
 import React from 'react'
-import '../Styles/Header.css'
-import { NavLink, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import '../Style/Header.css'
+import logo from '../img/got.png'
 
 const Header = () => {
-  /*   const location = useLocation()
-
-  React.useEffect(() => {
-    console.log('mudou de rota')
-  }, [location]) */
-
   return (
-    <nav>
-      <NavLink to="/">Home</NavLink>
-      {' | '}
-      <NavLink to="sobre">Sobre</NavLink>
-      {' | '}
-      <NavLink to="login">Login</NavLink>
-      {' | '}
-      <NavLink to="Produtos">Produtos</NavLink>
-    </nav>
+    <div className="Header">
+      <img src={logo} />
+      <div>
+        {' '}
+        <Link to="/">
+          {' '}
+          <span className="motion-words">Home</span>
+        </Link>
+        {' | '}
+        <Link to="about">
+          {' '}
+          <span className="motion-words">Houses</span>
+        </Link>
+      </div>
+    </div>
   )
 }
 

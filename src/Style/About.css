@@ -1,0 +1,29 @@
+.About {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 5px 20px;
+  align-items: center;
+  gap: 3rem;
+  width: 90%;
+  font-family: 'Times New Roman', Times, serif;
+  margin: 1rem 0rem 2rem 0px;
+  text-align: center;
+}
+
+.About-div1 {
+  display: flex;
+  gap: 1rem;
+}
+
+.About-div1-img {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.About-div1-img img {
+  max-width: 40%;
+}
