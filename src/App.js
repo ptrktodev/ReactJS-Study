@@ -48,17 +48,37 @@ const App = () => {
   const [cont, setCont] = React.useState(0)
   const [loading, setLoading] = React.useState(false)
   const TimeoutRef = React.useRef()
+  const [hability, setHability] = React.useState(false)
+  const [messageoff, setmessageoff] = React.useState(null)
+  const [onmsgof, setonmsgoff] = React.useState(false)
+  const [num, setnum] = React.useState(0)
 
   const resUser = Object.values(res)
   const resCorrect = perguntas.map((el) => {
     return el.resposta
   })
 
+  function quantityCorrect(correct, user) {
+    const newArray = correct.concat(user)
+    let ressEnd = []
+    newArray.forEach((element, index) => {
+      if (
+        newArray.indexOf(element) !== index &&
+        ressEnd.indexOf(element) === -1
+      ) {
+        ressEnd.push(element)
+      }
+    })
+    return ressEnd
+  }
+
+  const correctArrayLength = quantityCorrect(resCorrect, resUser)
+
   function verify(x, y) {
     return JSON.stringify(x) === JSON.stringify(y)
   }
 
-  const resFinal = verify(resUser, resCorrect)
+  let resFinal = verify(resUser, resCorrect)
 
   React.useEffect(() => {
     clearTimeout(TimeoutRef.current)
@@ -71,14 +91,27 @@ const App = () => {
 
   function click({ target }) {
     setResp({ ...res, [target.id]: target.value })
-    console.log(res)
   }
   function next() {
-    setCont(cont + 1)
-    console.log(res)
-    setLoading(true)
+    if (num > 0) {
+      setCont(cont + 1)
+      setLoading(true)
+      setHability(true)
+    } else {
+      setmessageoff(['Selecione alguma das opções.'])
+      setonmsgoff(true)
+    }
   }
 
+  function prev() {
+    if (cont < 1) {
+      setHability(false)
+    } else {
+      setCont(cont - 1)
+      setLoading(true)
+    }
+  }
+  //
   if (cont < 5) {
     return (
       <section className="App-container">
@@ -99,7 +132,15 @@ const App = () => {
             />
           ))}
         </form>
+        {onmsgof ? <span>{messageoff}</span> : ''}
         <div className="App-Button-1">
+          {hability ? (
+            <button onClick={prev} className="App-Button">
+              Prev
+            </button>
+          ) : (
+            ''
+          )}
           <button ref={TimeoutRef} onClick={next} className="App-Button">
             Next
           </button>
@@ -107,7 +148,13 @@ const App = () => {
       </section>
     )
   } else {
-    return <After response={resFinal} load={loading} />
+    return (
+      <After
+        response={resFinal}
+        load={loading}
+        lengthRes={correctArrayLength}
+      />
+    )
   }
 }
 
