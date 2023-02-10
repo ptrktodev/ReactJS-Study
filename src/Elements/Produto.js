@@ -7,7 +7,6 @@ const Produto = () => {
   const [data, setData] = React.useState(null)
   const [load, setLoad] = React.useState(false)
   const [erro, setErro] = React.useState(null)
-  const TimeoutRef = React.useRef()
   const { id } = useParams()
 
   React.useEffect(() => {
@@ -21,7 +20,7 @@ const Produto = () => {
           setLoad(false)
         }, 1000)
       } catch (error) {
-        setErro('deu merda')
+        setErro('Erro:', error)
       }
     }
     fetchProd(`https://ranekapi.origamid.dev/json/api/produto/${id}`)

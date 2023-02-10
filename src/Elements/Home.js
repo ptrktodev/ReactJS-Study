@@ -2,12 +2,12 @@ import React from 'react'
 import '../Style/Home.css'
 import { Link, useNavigate } from 'react-router-dom'
 
-const Home = ({ title }) => {
+const Home = (props) => {
   const [dados, setDados] = React.useState(null)
 
   React.useEffect(() => {
-    document.title = title
-  }, [title])
+    document.title = props.title
+  }, [props.title])
 
   React.useEffect(() => {
     fetch('https://ranekapi.origamid.dev/json/api/produto')

@@ -26,6 +26,7 @@
   border: 0px solid;
   cursor: pointer;
   border-radius: 8px;
+  padding: 0.2rem;
   font-size: 1.2rem;
   transition: 0.3s ease-in-out;
 }
