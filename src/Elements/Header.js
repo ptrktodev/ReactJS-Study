@@ -9,9 +9,9 @@ const Header = () => {
       <img src={logo} />
       <div className="Header-div">
         {' '}
-        <Link to="/">
+        <Link to="proptypes">
           {' '}
-          <button className="motion-words">Products</button>
+          <button className="motion-words">PropTypes</button>
         </Link>
       </div>
     </div>
