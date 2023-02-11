@@ -3,7 +3,8 @@ import './Style/App-section.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Header from './Elements/Header'
 import Footer from './Elements/Footer'
-import PropTypes from './Elements/PropTypes'
+import Home from './Elements/Home'
+import Login from './Elements/Login'
 
 const App = () => {
   return (
@@ -12,7 +13,8 @@ const App = () => {
         {' '}
         <Header />
         <Routes>
-          <Route path="proptypes" element={<PropTypes />} />
+          <Route path="/" element={<Home />} />
+          <Route path="login" element={<Login />} />
         </Routes>
         <Footer />
       </section>
